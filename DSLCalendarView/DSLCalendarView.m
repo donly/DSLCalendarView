@@ -103,6 +103,9 @@
 
     // Month views are contained in a content view inside a container view - like a scroll view, but not a scroll view so we can have proper control over animations
     CGRect frame = self.bounds;
+    frame.size.width = CGRectGetWidth([[UIScreen mainScreen] bounds]);
+    self.bounds = frame;
+    
     frame.origin.x = 0;
     frame.origin.y = CGRectGetMaxY(self.monthSelectorView.frame);
     frame.size.height -= frame.origin.y;
@@ -332,6 +335,7 @@
         frame = self.frame;
         frame.size.height = CGRectGetMaxY(self.monthContainerView.frame);
         self.frame = frame;
+        [self invalidateIntrinsicContentSize];
         
         // Tell the delegate method that we're about to animate to a new month
         if (monthComparisonResult != NSOrderedSame && [self.delegate respondsToSelector:@selector(calendarView:willChangeToVisibleMonth:duration:)]) {
@@ -356,6 +360,11 @@
     return (month.weekday - month.calendar.firstWeekday == 0);
 }
 
+
+- (CGSize)intrinsicContentSize {
+    CGSize size = self.frame.size;
+    return size;
+}
 
 #pragma mark - Touches
 
