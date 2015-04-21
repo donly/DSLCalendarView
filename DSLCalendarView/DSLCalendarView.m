@@ -105,6 +105,11 @@
     CGRect frame = self.bounds;
     frame.size.width = CGRectGetWidth([[UIScreen mainScreen] bounds]);
     self.bounds = frame;
+
+    CGRect selectorViewFrame = self.monthSelectorView.frame;
+    selectorViewFrame.size.width = CGRectGetWidth(frame);
+    selectorViewFrame.size.height = 64.f;
+    self.monthSelectorView.frame = selectorViewFrame;
     
     frame.origin.x = 0;
     frame.origin.y = CGRectGetMaxY(self.monthSelectorView.frame);
@@ -115,9 +120,8 @@
     
     self.monthContainerViewContentView = [[UIView alloc] initWithFrame:self.monthContainerView.bounds];
     [self.monthContainerView addSubview:self.monthContainerViewContentView];
-    
-    self.monthViews = [[NSMutableDictionary alloc] init];
 
+    self.monthViews = [[NSMutableDictionary alloc] init];
     [self updateMonthLabelMonth:_visibleMonth];
     [self positionViewsForMonth:_visibleMonth fromMonth:_visibleMonth animated:NO];
 }

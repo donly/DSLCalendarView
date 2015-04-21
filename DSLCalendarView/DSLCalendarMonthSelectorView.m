@@ -119,4 +119,8 @@
     }
 }
 
+- (CGSize)intrinsicContentSize {
+    return CGSizeMake(CGRectGetWidth([[UIScreen mainScreen] bounds]), CGRectGetHeight(self.bounds));
+}
+
 @end
