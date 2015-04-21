@@ -41,6 +41,7 @@
 @property (nonatomic, copy) NSDateComponents *visibleMonth;
 @property (nonatomic, strong) DSLCalendarRange *selectedRange;
 @property (nonatomic, assign) BOOL showDayCalloutView;
+@property (nonatomic, assign) BOOL enable;
 
 + (Class)monthSelectorViewClass;
 + (Class)monthViewClass;

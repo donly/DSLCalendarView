@@ -373,6 +373,10 @@
 #pragma mark - Touches
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    if (!_enable) {
+        return;
+    }
+    
     DSLCalendarDayView *touchedView = [self dayViewForTouches:touches];
     if (touchedView == nil) {
         self.draggingStartDay = nil;
@@ -406,6 +410,10 @@
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    if (!_enable) {
+        return;
+    }
+    
     if (self.draggingStartDay == nil) {
         return;
     }
@@ -439,6 +447,10 @@
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    if (!_enable) {
+        return;
+    }
+    
     if (self.draggingStartDay == nil) {
         return;
     }
